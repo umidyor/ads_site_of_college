@@ -210,8 +210,8 @@ class SubmitFormView(APIView):
 
 import requests
 
-TELEGRAM_BOT_TOKEN = '7370565735:AAFPVROFACFRYmrfdHPtzJUREgb_1ufZbRE'
-CHAT_ID = '5149506457'
+TELEGRAM_BOT_TOKEN = '##############'
+CHAT_ID = '###########'
 
 
 def send_telegram_message(message):
