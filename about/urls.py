@@ -13,6 +13,8 @@ urlpatterns = [
     path('courses/<str:course_name>',every_course,name="every_course"),
     path('news',news,name="news"),
     path('news/<int:news_id>/edit/', edit_news, name='edit_news'),
+    path('login',login_view,name='login'),
+    path('logout',logout_view,name='logout'),
 
 
 ]

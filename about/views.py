@@ -296,13 +296,24 @@ def edit_news(request, news_id):
         form = AchievementForm(instance=news_instance)
 
     return render(request, 'edit_news.html', {'form': form, 'news': news_instance})
+from django.contrib.auth import authenticate, login,logout
 
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-# from django import template
-#
-# register = template.Library()
-#
-# @register.filter
-# def jsonify(value):
-#   import json
-#   return json.dumps(value)
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'You have successfully logged in!')
+            return redirect('index')  # Redirect to a 'home' or other desired page after login
+        else:
+            messages.error(request, 'Invalid username or password')
+
+    return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect("index")
