@@ -209,9 +209,9 @@ class SubmitFormView(APIView):
 
 
 import requests
+from env import *
 
-TELEGRAM_BOT_TOKEN = '##############'
-CHAT_ID = '###########'
+
 
 
 def send_telegram_message(message):
@@ -298,21 +298,21 @@ def edit_news(request, news_id):
     return render(request, 'edit_news.html', {'form': form, 'news': news_instance})
 from django.contrib.auth import authenticate, login,logout
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'You have successfully logged in!')
-            return redirect('index')  # Redirect to a 'home' or other desired page after login
-        else:
-            messages.error(request, 'Invalid username or password')
-
-    return render(request, 'login.html')
+# def login_view(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#
+#         user = authenticate(request, username=username, password=password)
+#
+#         if user is not None:
+#             login(request, user)
+#             messages.success(request, 'You have successfully logged in!')
+#             return redirect('index')  # Redirect to a 'home' or other desired page after login
+#         else:
+#             messages.error(request, 'Invalid username or password')
+#
+#     return render(request, 'login.html')
 
 def logout_view(request):
     logout(request)
